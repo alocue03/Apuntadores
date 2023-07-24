@@ -8,7 +8,7 @@ void PruebaArgumentos(int argc, char** argv)
 		for (int i = 1; i < argc; i++)
 		{
 			std::cout << argv[i] << "\n";
-			//toda la cadena de texto termina con un /0
+			//toda acadena de texto termina con un /0
 			int j = 0;
 			int value = 0;
 			std::cout << " ";
@@ -53,22 +53,52 @@ void Promedio(int argc, char** argv)
 	*(x + 1) = 18;
 	std::cout << " x+1 :" << *(x + 1) << " en " << x + 1 << "\n";
 
-	//arreglo de 100 enteros
 	int* y = new int[100];
-	memset(y, 0, 100 * sizeof(int));
+	char seguir;
+	bool Continuale = true;
+	memset(y, 0, sizeof(int));
 
-	//generar una lista de 100 enteros aleatorios
-	int* acumulador = new int;
-	*acumulador = 0;
+	int* contador = new int;
+	*contador = 0;
+	float yeet;
+	yeet = 0;
+
+
 	for (int i = 0; i < 100; i++)
 	{
-		y[i] = rand();
-		std::cout << " y[" << i << "] = " << *(y + i) << "\n";
-		*acumulador += y[i];
+		if (Continuale)
+		{
+			yeet += 1;
+			std::cout << "dame los valores tonto " << "\n";
+			std::cin >> y[i];
+			std::cout << " y[ " << i << " ] = " << y[i] << "\n";
+			*contador += y[i];
+		}
+		if (Continuale || Continuale == false)
+		{
+			std::cout << "Quieres seguir? Presiona Y para seguir N para cerrar el programa: " << "\n";
+			std::cin >> seguir;
+		}
+		if (seguir == 'Y' || seguir == 'y')
+		{
+			Continuale = true;
+			continue;
+		}
+		else  if (seguir == 'N' || seguir == 'n')
+		{
+			break;
+		}
+		else
+		{
+			std::cout << "Letra erronea" << "\n";
+			i -= 1;
+			Continuale = false;
+		}
 	}
-	float promedio = *acumulador / 100.0;
-	std::cout << " prmedio = " << promedio << "\n";
+	float promedio = *contador / yeet;
+	std::cout << " Promedio = " << promedio << "\n";
 }
+
 
 int main(int argc, char** argv)
 {
